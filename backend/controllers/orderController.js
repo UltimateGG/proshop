@@ -23,6 +23,26 @@ const addOrderItems = asyncHandler(async (req, res) => {
     }
 });
 
+// @desc    Get an order by ID
+// @route   GET /api/orders/:id
+// @access  Private
+const getOrderById = asyncHandler(async (req, res) => {
+    const order = await Order.findById(req.params.id).populate('user', 'name email');
+
+    if (order) {
+        if (order.user._id === req.user._id || req.user.isAdmin) {
+            res.json(order);
+        } else {
+            res.status(401);
+            throw new Error('Not authorized to view this order');
+        }
+    } else {
+        res.status(404);
+        throw new Error('Order not found');
+    }
+});
+
 export {
-    addOrderItems
+    addOrderItems,
+    getOrderById
 }
