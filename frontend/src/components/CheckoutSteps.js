@@ -1,7 +1,6 @@
 import React from 'react';
 import { Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Link } from 'react-router-dom';
 
 const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
     return (
@@ -22,7 +21,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
                         <Nav.Link>Shipping</Nav.Link>
                     </LinkContainer>
                 ) : (
-                    <Nav.Link disabled>Shippinh</Nav.Link>
+                    <Nav.Link disabled>Shipping</Nav.Link>
                 )}
             </Nav.Item>
 
