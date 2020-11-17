@@ -7,6 +7,7 @@ import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { listProducts } from '../actions/productActions';
 import Paginate from '../components/Paginate';
+import ProductCarousel from '../components/ProductCarousel';
 
 const HomeScreen = ({ match }) => {
     const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const HomeScreen = ({ match }) => {
 
     return (
         <>  
+            <ProductCarousel />
             <h1>Latest Products</h1>
             {loading ? (<Loader />) : error ? (<Message variant='danger'>{error}</Message>) : 
             (
