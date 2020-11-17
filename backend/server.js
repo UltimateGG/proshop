@@ -1,23 +1,28 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-import express from 'express';
-const app = express();
-
-app.use(express.json());
-
-const PORT = process.env.PORT || 5000;
-
 import connectDB from './config/db.js';
 import colors from 'colors';
 import path from 'path';
+import morgan from 'morgan';
 import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
+import express from 'express';
+const app = express();
+
+if (process.env.NODE_ENV === 'development') {
+    app.use(morgan('dev'));
+}
+
+app.use(express.json());
+
+const PORT = process.env.PORT || 5000;
 connectDB();
+
 
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
