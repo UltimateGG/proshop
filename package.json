@@ -12,7 +12,6 @@
     "data:import": "node --experimental-modules backend/seeder",
     "data:destroy": "node --experimental-modules backend/seeder -d"
   },
-  "author": "Blake Fitzsimmons",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
